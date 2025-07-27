@@ -1,0 +1,90 @@
+<%- include("partials/header.ejs") %>
+<body>
+    <h1> Todo list </h1>
+    <a href="/todos/new">+ New todo</a>
+
+    <!-- Pending Tasks -->
+    <h2>Pending</h2>
+    <ul>
+        <% if (incompleteTodos.length === 0) { %>
+            <p>No pending tasks!</p>
+        <% } else { %>
+            <% incompleteTodos.forEach(todo => { %>
+            <li>
+                <form action="/todos/<%= todo.id %>?_method=PUT" method="POST" style="display:inline;">
+                    <input 
+                        type="checkbox" 
+                        name="completed" 
+                        onchange="this.form.submit()"
+                    >
+                    <span><%= todo.task %></span>
+                </form>
+
+                <div class="todo-meta">
+                        <% if (todo.priority) { %>
+                            <p><strong>Priority:</strong> <span class="priority priority-<%= todo.priority.toLowerCase() %>"><%= todo.priority %></span></p>
+                        <% } %>
+                        <% if (todo.dueDate) { %>
+                            <p><strong>Due:</strong> <%= todo.dueDate %></p>
+                        <% } %>
+                        <% if (todo.tags && todo.tags.length > 0) { %>
+                            <p><strong>Tags:</strong> <%= todo.tags.join(", ") %></p>
+                        <% } %>
+                        <p><strong>Status:</strong> Pending</p>
+                </div>
+
+
+                <a href="/todos/<%= todo.id %>" class="hover-style">view</a>
+                <a href="/todos/<%= todo.id %>/edit" class="hover-style">edit</a>
+
+                <form action="/todos/<%= todo.id %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+            <% }); %>
+        <% } %>
+    </ul>
+    <!-- Completed Tasks -->
+    <h2>Completed</h2>
+    <ul>
+    <% if (completedTodos.length === 0) { %>
+        <p>No completed tasks yet.</p>
+    <% } else { %>
+        <% completedTodos.forEach(todo => { %>
+        <li>
+            <form action="/todos/<%= todo.id %>?_method=PUT" method="POST" style="display:inline;">
+            <input 
+                type="checkbox" 
+                name="completed" 
+                onchange="this.form.submit()" 
+                checked
+            >
+            <span class="completed"><%= todo.task %></span>
+            </form>
+            <div class="todo-meta">
+                <% if (todo.priority) { %>
+                    <p><strong>Priority:</strong> <span class="priority priority-<%= todo.priority.toLowerCase() %>"><%= todo.priority %></span></p>
+                <% } %>
+                <% if (todo.dueDate) { %>
+                    <p><strong>Due:</strong> <%= todo.dueDate %></p>
+                <% } %>
+                <% if (todo.tags && todo.tags.length > 0) { %>
+                    <p><strong>Tags:</strong> <%= todo.tags.join(", ") %></p>
+                <% } %>
+                <p><strong>Status:</strong> Completed</p>
+            </div>
+
+
+            <a href="/todos/<%= todo.id %>" class="hover-style">view</a>
+            <a href="/todos/<%= todo.id %>/edit" class="hover-style">edit</a>
+            <form action="/todos/<%= todo.id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        <% }); %>
+    <% } %>
+    </ul>
+    
+</body>
+<%- include("partials/footer.ejs") %>
+

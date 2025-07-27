@@ -1,0 +1,31 @@
+<%- include("partials/header") %>
+<body>
+  <div class="detail-container">
+    <h1>Todo Details</h1>
+
+    <div class="todo-detail-card">
+      <p><strong>Task:</strong> <span><%= todo.task %></span></p>
+      <p><strong>Status:</strong> <span class="<%= todo.completed ? 'completed' : 'incomplete' %>">
+        <%= todo.completed ? "Completed" : "Incomplete" %>
+      </span></p>
+
+      <% if (todo.priority) { %>
+        <p><strong>Priority:</strong> <span><%= todo.priority %></span></p>
+      <% } %>
+
+      <% if (todo.dueDate) { %>
+        <p><strong>Due Date:</strong> <span><%= todo.dueDate %></span></p>
+      <% } %>
+
+      <% if (todo.description) { %>
+        <p><strong>Description:</strong> <span><%= todo.description %></span></p>
+      <% } %>
+    </div>
+
+    <div class="btn-group">
+      <a href="/" class="btn">← Back to Home</a>
+      <a href="/todos/<%= todo.id %>/edit" class="btn edit">Edit</a>
+    </div>
+  </div>
+</body>
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,38 @@
+<%- include("partials/header.ejs") %>
+<body>
+  <div class="container">
+    <h1>Edit Todo</h1>
+
+    <form action="/todos/<%= todo.id %>?_method=put" method="POST" class="todo-form">
+      <div class="form-group">
+        <label for="task">Task:</label>
+        <input type="text" name="task" id="task" value="<%= todo.task %>" required placeholder="Update your task">
+      </div>
+
+      <div class="form-group">
+        <label for="priority">Priority:</label>
+        <select name="priority" id="priority">
+          <option value="" <%= !todo.priority ? "selected" : "" %>>None</option>
+          <option value="High" <%= todo.priority === "High" ? "selected" : "" %>>High</option>
+          <option value="Medium" <%= todo.priority === "Medium" ? "selected" : "" %>>Medium</option>
+          <option value="Low" <%= todo.priority === "Low" ? "selected" : "" %>>Low</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="dueDate">Due Date:</label>
+        <input type="date" name="dueDate" id="dueDate" value="<%= todo.dueDate ? todo.dueDate : '' %>">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" rows="4" placeholder="Update the description..."><%= todo.description ? todo.description : '' %></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Update</button>
+    </form>
+
+    <p><a href="/" class="back-link">← Back to Home</a></p>
+  </div>
+</body>
+<%- include("partials/footer.ejs") %>

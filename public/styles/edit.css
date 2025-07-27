@@ -1,0 +1,18 @@
+form {
+  background-color: #ffffff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+p a {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* Smaller form on mobile */
+@media (max-width: 500px) {
+  form {
+    padding: 20px;
+  }
+}
