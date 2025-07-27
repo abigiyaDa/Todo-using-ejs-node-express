@@ -17,28 +17,28 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-
-
-let todos = [
-  { 
-    id: 1, 
-    task: "Buy groceries", 
-    completed: false,
-    priority: "High", 
-    dueDate: "2025-08-01", 
-    description: "Get milk, bread, eggs", 
-    status: "Pending"
-  },
-  { 
-    id: 2, 
-    task: "Walk the dog", 
-    completed: false,
-    priority: "Medium", 
-    dueDate: "2025-08-02", 
-    description: "Evening walk", 
-    status: "Pending"
-  },
-];
+let todos = [];
+// dummy data
+// let todos = [
+//   { 
+//     id: 1, 
+//     task: "Buy groceries", 
+//     completed: false,
+//     priority: "High", 
+//     dueDate: "2025-08-01", 
+//     description: "Get milk, bread, eggs", 
+//     status: "Pending"
+//   },
+//   { 
+//     id: 2, 
+//     task: "Walk the dog", 
+//     completed: false,
+//     priority: "Medium", 
+//     dueDate: "2025-08-02", 
+//     description: "Evening walk", 
+//     status: "Pending"
+//   },
+// ];
 
 
 // home page = show all todos
