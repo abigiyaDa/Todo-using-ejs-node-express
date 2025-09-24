@@ -50,7 +50,10 @@ Copy code
 
 - Node.js and npm installed
 - Git (optional, for cloning the repo)
-
+### clone (https)
+```bash
+git clone https://github.com/abigiyaDa/Todo-using-ejs-node-express.git
+```
 ### Install dependencies
 
 ```bash
